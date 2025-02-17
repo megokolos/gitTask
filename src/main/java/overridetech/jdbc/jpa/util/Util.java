@@ -47,16 +47,19 @@ public class Util {
         configuration.setProperty("hibernate.hbm2ddl.auto", "update");
         return configuration;
     }
+
     public static SessionFactory createSessionFactory(Configuration configuration) {
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
         builder.applySettings(configuration.getProperties());
         ServiceRegistry serviceRegistry = builder.build();
         return configuration.buildSessionFactory(serviceRegistry);
     }
+
     private static SessionFactory buildSessionFactory() {
         Configuration configuration = getMyPostgresConfiguration();
         return createSessionFactory(configuration);
     }
+
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
